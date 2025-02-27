@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Random boxes</title>
+    <style>
+      body {
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const randomNumber = (start = 0, end = 100) => {
+        return Math.floor(Math.random() * end) + start;
+      };
+
+      const createSquare = () => {
+        return {
+          width: randomNumber(10, 150),
+          aspectRatio: 1,
+          position: "absolute",
+          x: `${randomNumber()}`,
+          y: `${randomNumber()}`,
+          color: `rgba(${randomNumber(0, 256)},${randomNumber(
+            0,
+            256
+          )},${randomNumber(0, 256)},${Math.random()})`,
+        };
+      };
+
+      const styleToString = ({ width, aspectRatio, color, position, x, y }) =>
+        `width:${width}px;aspect-ratio:${aspectRatio};position:${position};top:${y}vh;left:${x}vw;background-color:${color};`;
+
+      const toString = (shape) => `<div style="${styleToString(shape)}"></div>`;
+
+      setInterval(() => {
+        const squares = [];
+
+        for (let i = 0; i < 100; i++) {
+          squares.push(createSquare());
+        }
+
+        const allSquares = squares.map(toString).join("");
+        document.querySelector("body").innerHTML = allSquares;
+      }, 800);
+    </script>
+  </body>
+</html>
