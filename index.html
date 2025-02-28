@@ -21,10 +21,7 @@
           position: "absolute",
           x: `${randomNumber()}`,
           y: `${randomNumber()}`,
-          color: `rgba(${randomNumber(0, 256)},${randomNumber(
-            0,
-            256
-          )},${randomNumber(0, 256)},${Math.random()})`,
+          color: `rgba(0,0,0,${Math.random()})`,
         };
       };
 
@@ -42,7 +39,7 @@
 
         const allSquares = squares.map(toString).join("");
         document.querySelector("body").innerHTML = allSquares;
-      }, 800);
+      }, 100);
     </script>
   </body>
 </html>
